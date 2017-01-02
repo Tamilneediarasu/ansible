@@ -1,0 +1,25 @@
+---
+  # Talk to all hosts just so we can learn about them...
+- name: Create a sandbox instance
+  hosts: myservers
+  gather_facts: False
+  vars:
+   keypair: id_rsa
+   instance_type: t2.micro
+   image: ami-b7a114d7
+   region: us-west-2
+  tasks:
+   - name: Launch instance
+     ec2:
+        key_name: "{{ keypair }}"
+        group: default
+        instance_type: "{{ instance_type }}"
+        image: "{{ image }}"
+        wait: true
+        region: "{{ region }}"
+        AWS_ACCESS_KEY: AKIAJPG45BIBXHLVCGSQ
+        AWS_SECRET_KEY: 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
+     register: ec2
+   - name: Print all ec2 variables
+     debug: var=ec2
+ 

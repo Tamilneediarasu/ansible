@@ -17,8 +17,8 @@
         image: "{{ image }}"
         wait: true
         region: "{{ region }}"
-        AWS_ACCESS_KEY: AKIAJPG45BIBXHLVCGSQ
-        AWS_SECRET_KEY: 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
+        AWS_ACCESS_KEY: 
+        AWS_SECRET_KEY: 
      register: ec2
    - name: Print all ec2 variables
      debug: var=ec2

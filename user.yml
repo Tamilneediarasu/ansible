@@ -1,0 +1,9 @@
+---
+- hosts: localhost
+  tasks:
+    - user:
+        name: arasu
+        comment: creating root user
+        uid: 1040
+        group: admin
+...

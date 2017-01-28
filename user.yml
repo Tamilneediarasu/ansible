@@ -3,7 +3,24 @@
   tasks:
     - user:
         name: arasu
+        password: "{{ 'password' | password_hash('sha512') }}"
         comment: creating root user
         uid: 1040
         group: admin
 ...
+
+
+
+
+
+
+- name: Create madhead user
+  user:
+    name: madhead
+    password: "{{ 'password' | password_hash('sha512') }}"
+    shell: /bin/zsh
+    update_password: on_create
+  register: madhead
+- name: Force madhead to change password
+  shell: chage -d 0 madhead
+  when: madhead.changed
